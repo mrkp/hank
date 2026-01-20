@@ -40,9 +40,24 @@ export default function CollaborationsPage() {
                   <p className="text-xs tracking-widest uppercase text-muted mb-6">
                     Featured Project
                   </p>
-                  <h2 className="text-4xl md:text-5xl font-light mb-6">
-                    For Freedoms
-                  </h2>
+                  {/* For Freedoms Logo */}
+                  <div className="mb-8">
+                    <svg
+                      width="280"
+                      height="auto"
+                      viewBox="0 0 468 216"
+                      className="w-48 md:w-64 lg:w-72"
+                      aria-label="For Freedoms"
+                    >
+                      <title>For Freedoms</title>
+                      <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+                        <g fill="#0A0B09">
+                          <path d="M468,21.9904375 C459.02667,18.4220331 450.117105,15.4631083 441.260053,13 L441.260053,113.041273 C306.064345,75.434174 183.635346,159.467393 50,136.966417 L50,162.066897 C183.640972,184.555586 306.069971,100.522367 441.260053,138.13561 L441.260053,163.06406 C306.064345,125.451431 183.635346,209.484651 50,186.984288 L50,212.112417 C192.394251,236.07811 322.056176,139.036312 468,197.148834 L468,21.9904375"></path>
+                          <path d="M26.7340956,102.955842 C161.960582,140.582074 284.397039,56.551445 418,79.029861 L418,53.9346464 C284.391412,31.4562304 161.960582,115.492389 26.7340956,77.8612415 L26.7340956,52.9368346 C161.960582,90.5624528 284.397039,6.53182346 418,29.0047098 L418,3.88123204 C275.644254,-20.0625666 145.98039,76.9715668 0,18.8398084 L0,194.010477 C8.96721231,197.584536 17.8769104,200.53189 26.7340956,203 L26.7340956,102.955842"></path>
+                        </g>
+                      </g>
+                    </svg>
+                  </div>
                   <p className="text-lg text-muted leading-relaxed mb-8">
                     A platform for creative civic engagement, discourse, and direct
                     action. For Freedoms uses art as a vehicle for exploring freedom
