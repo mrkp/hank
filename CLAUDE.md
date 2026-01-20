@@ -24,7 +24,6 @@ app/
 
 components/
 ├── Navigation.tsx        # Fixed header with mobile menu
-├── CustomCursor.tsx      # Black dot + ring cursor with gallery hover states
 └── ScrollReveal.tsx      # Intersection Observer scroll animations
 
 lib/
@@ -64,12 +63,13 @@ The site is designed as an interactive art gallery with:
 - `.exhibit-marker` - Black dot section indicator
 - `.room-divider` - Gradient line between gallery rooms
 - `.link-underline` - Animated underline on hover
+- `.masonry-grid` - CSS columns-based masonry layout (1-4 columns responsive)
+- `.masonry-item` - Item within masonry grid with break-inside-avoid
 - `.animate-reveal`, `.animate-fade-in`, `.animate-slide-up` - Entry animations
 - `.animate-breathe` - Subtle pulsing animation for "now showing" indicators
 - `.section-fade` + `.visible` - Scroll-triggered fade in
 
 ### Interactive Elements
-- Custom cursor expands on gallery items (`data-cursor-gallery` attribute)
 - Hover states shift content horizontally (`group-hover:translate-x-2`)
 - Border transitions from light to black on hover
 - Theme tags invert colors on hover (black bg, white text)
@@ -85,28 +85,19 @@ All artist content is centralized in `lib/data.ts`. To update:
 - **Collaborations**: Edit `artistData.collaborations`
 - **Honors**: Add to `artistData.honors` array
 
-## Adding Images
+## Images
 
-Place images in `/public/works/` and reference them in the data file. The current implementation uses placeholder containers with numbers - replace the placeholder divs with `<Image>` components when images are available.
+All images are loaded from the Sanity CDN (cdn.sanity.io). The `next.config.ts` is configured with the appropriate `remotePatterns`. Each work in `selectedWorks` includes `width` and `height` properties to maintain proper aspect ratios in the masonry layout.
 
-Example replacement:
-```tsx
-// From placeholder:
-<div className="aspect-[3/4] bg-neutral-100 gallery-frame">
-  <span className="text-6xl font-extralight text-neutral-200">01</span>
-</div>
-
-// To image:
-<div className="aspect-[3/4] gallery-frame overflow-hidden">
-  <Image src="/works/artwork-1.jpg" alt="Artwork title" fill className="object-cover" />
-</div>
-```
+The Works page uses a CSS columns-based masonry grid that:
+- Displays images at their natural aspect ratios (no cropping)
+- Mixes horizontal and vertical images naturally
+- Responsive columns: 1 (mobile), 2 (tablet), 3 (desktop), 4 (large screens)
 
 ## Notes
 
-- Custom cursor only shows on devices with hover capability (lg: breakpoint)
-- Add `data-cursor-gallery` to elements for expanded cursor effect
 - Mobile navigation uses a full-screen white overlay with staggered link animations
 - All pages use scroll-triggered reveal animations via the `ScrollReveal` component
 - The honors marquee on the homepage uses an infinite CSS scroll animation
 - Gallery rooms are numbered (Gallery 01, Gallery 02, etc.) for wayfinding
+- Works page category filter is functional with client-side state (Retroreflective, Quilts, Sculpture, Mixed Media)

@@ -137,12 +137,24 @@ export const artistData = {
 
   selectedWorks: [
     {
+      title: "Remember Me",
+      year: "2023",
+      medium: "Retroreflective vinyl on aluminum",
+      description: "A retroreflective work exploring themes of memory and presence, installed at the Museum of Fine Arts, Boston.",
+      category: "Retroreflective",
+      image: "https://cdn.sanity.io/images/93zz3bxe/production/96457dd34364635856f39c6755c34c7e23da888d-4032x3024.jpg",
+      width: 4032,
+      height: 3024
+    },
+    {
       title: "I looked upon the Nile and raised the pyramids above it",
       year: "2023",
       medium: "Retroreflective vinyl on aluminum",
       description: "A retroreflective work that reveals different imagery under flash photography, exploring themes of African heritage and historical erasure.",
       category: "Retroreflective",
-      image: "https://cdn.sanity.io/images/93zz3bxe/production/55603af9ae47f8b41ddcba0c8e7f644170bf5903-3000x2000.jpg"
+      image: "https://cdn.sanity.io/images/93zz3bxe/production/55603af9ae47f8b41ddcba0c8e7f644170bf5903-3000x2000.jpg",
+      width: 3000,
+      height: 2000
     },
     {
       title: "The Embrace",
@@ -150,7 +162,29 @@ export const artistData = {
       medium: "Bronze sculpture",
       description: "A monumental bronze sculpture honoring Dr. Martin Luther King Jr. and Coretta Scott King.",
       category: "Sculpture",
-      image: "https://cdn.sanity.io/images/93zz3bxe/production/820520970b65451e987a3642d5677a9ac760c154-6000x4000.jpg"
+      image: "https://cdn.sanity.io/images/93zz3bxe/production/820520970b65451e987a3642d5677a9ac760c154-6000x4000.jpg",
+      width: 6000,
+      height: 4000
+    },
+    {
+      title: "No.8",
+      year: "2021",
+      medium: "Quilt",
+      description: "Part of the ongoing quilt series exploring textile traditions and collective memory.",
+      category: "Quilts",
+      image: "https://cdn.sanity.io/images/93zz3bxe/production/eecc6c24e77734c34675968ef48f506234d69e20-1574x2212.jpg",
+      width: 1574,
+      height: 2212
+    },
+    {
+      title: "No.13",
+      year: "2021",
+      medium: "Quilt",
+      description: "A textile work connecting craft traditions to contemporary artistic practice.",
+      category: "Quilts",
+      image: "https://cdn.sanity.io/images/93zz3bxe/production/2e34cbca860a3f0114ad56b4fba4557f2b07cb06-1300x2545.jpg",
+      width: 1300,
+      height: 2545
     },
     {
       title: "Listen Lord (Aaron Douglas)",
@@ -158,7 +192,19 @@ export const artistData = {
       medium: "Mixed media",
       description: "A work paying homage to the Harlem Renaissance artist Aaron Douglas and his powerful visual legacy.",
       category: "Mixed Media",
-      image: "https://cdn.sanity.io/images/93zz3bxe/production/86091500c86cb3d89aa31eb66bb6ae8dfa97eb85-2507x3534.jpg"
+      image: "https://cdn.sanity.io/images/93zz3bxe/production/86091500c86cb3d89aa31eb66bb6ae8dfa97eb85-2507x3534.jpg",
+      width: 2507,
+      height: 3534
+    },
+    {
+      title: "Frosted Yellow Willows (Anna May Wong)",
+      year: "2021",
+      medium: "Mixed media",
+      description: "An homage to the pioneering Asian American actress, rendered in bold primary colors.",
+      category: "Mixed Media",
+      image: "https://cdn.sanity.io/images/93zz3bxe/production/bba3ebb343a9501405497b0aefb3cae83c74c9d7-3791x3626.jpg",
+      width: 3791,
+      height: 3626
     },
     {
       title: "O Long May It Wave",
@@ -166,7 +212,19 @@ export const artistData = {
       medium: "Mixed media",
       description: "An examination of American symbolism and the complex histories embedded in national iconography.",
       category: "Mixed Media",
-      image: "https://cdn.sanity.io/images/93zz3bxe/production/20fb70cbf85ee04d57b6e06f535d6d16baf32d35-2400x2205.jpg"
+      image: "https://cdn.sanity.io/images/93zz3bxe/production/20fb70cbf85ee04d57b6e06f535d6d16baf32d35-2400x2205.jpg",
+      width: 2400,
+      height: 2205
+    },
+    {
+      title: "At the twilight's last gleaming?",
+      year: "2021",
+      medium: "Retroreflective vinyl on aluminum",
+      description: "A retroreflective work questioning American ideals and the promises of freedom.",
+      category: "Retroreflective",
+      image: "https://cdn.sanity.io/images/93zz3bxe/production/e413e775b04e895142c6b00bacc71a771ff19953-2400x1543.jpg",
+      width: 2400,
+      height: 1543
     },
     {
       title: "Colonialism and Abstract Art",
@@ -174,7 +232,9 @@ export const artistData = {
       medium: "Mixed media",
       description: "Explores the intersection of modernist abstraction and colonial histories.",
       category: "Mixed Media",
-      image: "https://cdn.sanity.io/images/93zz3bxe/production/8fb8a219cc7946b601d1e3eead655a5c0afe333f-1004x1405.jpg"
+      image: "https://cdn.sanity.io/images/93zz3bxe/production/8fb8a219cc7946b601d1e3eead655a5c0afe333f-1004x1405.jpg",
+      width: 1004,
+      height: 1405
     },
     {
       title: "The Toilers",
@@ -182,7 +242,9 @@ export const artistData = {
       medium: "Mixed media",
       description: "A reflection on labor, history, and the human condition.",
       category: "Mixed Media",
-      image: "https://cdn.sanity.io/images/93zz3bxe/production/aed6880549ca41a59e147f77c6f3a1f58712ee89-1367x1906.jpg"
+      image: "https://cdn.sanity.io/images/93zz3bxe/production/aed6880549ca41a59e147f77c6f3a1f58712ee89-1367x1906.jpg",
+      width: 1367,
+      height: 1906
     },
     {
       title: "Freedom Riders on Colors for a Large Wall",
@@ -190,7 +252,9 @@ export const artistData = {
       medium: "Mixed media",
       description: "A tribute to the Freedom Riders and the civil rights movement, rendered through bold color and form.",
       category: "Mixed Media",
-      image: "https://cdn.sanity.io/images/93zz3bxe/production/e2b2c78302d0038a420fed410bcf3e2a11cff07c-1333x2000.gif"
+      image: "https://cdn.sanity.io/images/93zz3bxe/production/e2b2c78302d0038a420fed410bcf3e2a11cff07c-1333x2000.gif",
+      width: 1333,
+      height: 2000
     },
     {
       title: "Sundown",
@@ -198,7 +262,9 @@ export const artistData = {
       medium: "Retroreflective vinyl",
       description: "A meditation on sundown towns and the hidden histories of racial exclusion in America.",
       category: "Retroreflective",
-      image: "https://cdn.sanity.io/images/93zz3bxe/production/5afa5bfc9f6ff8906bc1b886623781ba086ce4c2-2400x1603.jpg"
+      image: "https://cdn.sanity.io/images/93zz3bxe/production/5afa5bfc9f6ff8906bc1b886623781ba086ce4c2-2400x1603.jpg",
+      width: 2400,
+      height: 1603
     }
   ],
 

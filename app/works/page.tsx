@@ -1,22 +1,24 @@
+'use client';
+
 import Image from 'next/image';
+import { useState } from 'react';
 import ScrollReveal from '@/components/ScrollReveal';
 import { artistData } from '@/lib/data';
-import { Metadata } from 'next';
 
-export const metadata: Metadata = {
-  title: 'Works | Hank Willis Thomas',
-  description:
-    'Explore the artistic works of Hank Willis Thomas, including photography, sculpture, and mixed media.',
-};
-
-const categories = ['All', 'Retroreflective', 'Sculpture', 'Mixed Media'];
+const categories = ['All', 'Retroreflective', 'Quilts', 'Sculpture', 'Mixed Media'];
 
 export default function WorksPage() {
+  const [activeCategory, setActiveCategory] = useState('All');
+
+  const filteredWorks = activeCategory === 'All'
+    ? artistData.selectedWorks
+    : artistData.selectedWorks.filter(work => work.category === activeCategory);
+
   return (
     <div className="min-h-screen pt-32 pb-24 px-6 md:px-12">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-[1800px] mx-auto">
         {/* Header */}
-        <div className="mb-24">
+        <div className="mb-16">
           <div className="flex items-center gap-4 mb-8 opacity-0-init animate-fade-in">
             <div className="exhibit-marker" />
             <p className="text-xs tracking-[0.3em] uppercase">
@@ -33,12 +35,13 @@ export default function WorksPage() {
         </div>
 
         {/* Category Filter */}
-        <div className="flex flex-wrap gap-3 mb-16 opacity-0-init animate-fade-in delay-500">
+        <div className="flex flex-wrap gap-3 mb-12 opacity-0-init animate-fade-in delay-500">
           {categories.map((category) => (
             <button
               key={category}
+              onClick={() => setActiveCategory(category)}
               className={`px-5 py-2.5 text-sm tracking-wide border transition-all ${
-                category === 'All'
+                category === activeCategory
                   ? 'border-black bg-black text-white'
                   : 'border-border text-muted hover:border-black hover:text-black'
               }`}
@@ -48,20 +51,26 @@ export default function WorksPage() {
           ))}
         </div>
 
-        {/* Works Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
-          {artistData.selectedWorks.map((work, index) => (
-            <ScrollReveal key={work.title} delay={index * 100}>
-              <article className="gallery-card group">
-                <div className="aspect-[3/4] bg-neutral-100 gallery-frame mb-6 relative overflow-hidden">
+        {/* Masonry Grid */}
+        <div className="masonry-grid">
+          {filteredWorks.map((work, index) => (
+            <ScrollReveal key={work.title} delay={index * 50}>
+              <article className="masonry-item gallery-card group">
+                <div
+                  className="bg-neutral-100 gallery-frame relative overflow-hidden"
+                  style={{
+                    aspectRatio: `${work.width} / ${work.height}`
+                  }}
+                >
                   <Image
                     src={work.image}
                     alt={work.title}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, (max-width: 1536px) 33vw, 25vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
-                <div className="artwork-label">
+                <div className="artwork-label mt-4">
                   <div className="flex items-center gap-3 mb-2">
                     <span className="text-xs text-muted tracking-wide uppercase">
                       {work.category}
@@ -69,13 +78,10 @@ export default function WorksPage() {
                     <span className="w-4 h-px bg-border" />
                     <span className="text-xs text-muted">{work.year}</span>
                   </div>
-                  <h2 className="text-xl font-light group-hover:translate-x-2 transition-transform">
+                  <h2 className="text-lg font-light group-hover:translate-x-2 transition-transform">
                     {work.title}
                   </h2>
-                  <p className="text-sm text-muted mt-2">{work.medium}</p>
-                  <p className="text-sm text-muted mt-3 leading-relaxed line-clamp-2">
-                    {work.description}
-                  </p>
+                  <p className="text-sm text-muted mt-1">{work.medium}</p>
                 </div>
               </article>
             </ScrollReveal>
@@ -92,12 +98,17 @@ export default function WorksPage() {
               </p>
             </div>
           </ScrollReveal>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
             {[
               {
                 title: 'Retroreflective',
                 description:
                   'Works using road signage vinyl that reveal hidden imagery under flash photography.',
+              },
+              {
+                title: 'Quilts',
+                description:
+                  'Textile works connecting craft traditions to contemporary artistic practice and collective memory.',
               },
               {
                 title: 'Sculpture',
