@@ -15,24 +15,36 @@ export default function AboutPage() {
         {/* Header */}
         <div className="grid lg:grid-cols-2 gap-16 mb-32">
           <div>
-            <p className="text-accent text-sm tracking-[0.3em] uppercase mb-4 opacity-0-init animate-fade-in">
-              About
-            </p>
-            <h1 className="text-4xl md:text-6xl font-light mb-6 opacity-0-init animate-reveal delay-200">
-              Hank Willis
+            <div className="flex items-center gap-4 mb-8 opacity-0-init animate-fade-in">
+              <div className="exhibit-marker" />
+              <p className="text-xs tracking-[0.3em] uppercase">
+                Gallery — About
+              </p>
+            </div>
+            <h1 className="text-4xl md:text-6xl font-light tracking-tight leading-[0.95] mb-8 opacity-0-init animate-reveal delay-200">
+              Hank
               <br />
-              <span className="gradient-text">Thomas</span>
+              Willis
+              <br />
+              Thomas
             </h1>
-            <p className="text-sm text-muted opacity-0-init animate-fade-in delay-400">
-              b. {artistData.born}
-              <br />
-              Lives and works in {artistData.location}
-            </p>
+            <div className="artwork-label opacity-0-init animate-fade-in delay-400">
+              <p className="text-sm text-muted">
+                b. {artistData.born}
+                <br />
+                Lives and works in {artistData.location}
+              </p>
+            </div>
           </div>
-          <div className="opacity-0-init animate-slide-up delay-500">
-            <div className="aspect-[4/5] bg-white/5 relative">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-[8rem] font-light text-white/5">HWT</span>
+          <div className="opacity-0-init animate-scale-in delay-500">
+            <div
+              className="aspect-[4/5] bg-neutral-100 gallery-frame"
+              data-cursor-gallery
+            >
+              <div className="w-full h-full flex items-center justify-center">
+                <span className="text-[8rem] font-extralight text-neutral-200">
+                  HWT
+                </span>
               </div>
             </div>
           </div>
@@ -41,9 +53,10 @@ export default function AboutPage() {
         {/* Bio */}
         <section className="mb-32">
           <ScrollReveal>
-            <p className="text-accent text-sm tracking-[0.3em] uppercase mb-8">
-              Biography
-            </p>
+            <div className="flex items-center gap-4 mb-12">
+              <div className="exhibit-marker" />
+              <p className="text-xs tracking-[0.3em] uppercase">Biography</p>
+            </div>
           </ScrollReveal>
           <div className="grid lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2 space-y-6">
@@ -57,21 +70,19 @@ export default function AboutPage() {
             </div>
             <div>
               <ScrollReveal delay={300}>
-                <div className="sticky top-32 space-y-8">
-                  <div>
-                    <p className="text-xs text-accent tracking-wider uppercase mb-3">
-                      Themes
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {artistData.themes.map((theme) => (
-                        <span
-                          key={theme}
-                          className="px-3 py-1 border border-white/10 text-sm text-muted"
-                        >
-                          {theme}
-                        </span>
-                      ))}
-                    </div>
+                <div className="sticky top-32">
+                  <p className="text-xs text-muted tracking-widest uppercase mb-4">
+                    Themes
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {artistData.themes.map((theme) => (
+                      <span
+                        key={theme}
+                        className="px-3 py-1.5 border border-border text-sm hover:border-black transition-colors"
+                      >
+                        {theme}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </ScrollReveal>
@@ -80,13 +91,14 @@ export default function AboutPage() {
         </section>
 
         {/* Statement Quote */}
-        <section className="mb-32 py-24 border-t border-b border-white/10">
+        <section className="mb-32 py-24 bg-neutral-50 -mx-6 md:-mx-12 px-6 md:px-12">
           <ScrollReveal>
-            <div className="max-w-4xl mx-auto text-center">
-              <span className="quote-mark text-accent">&ldquo;</span>
-              <blockquote className="text-2xl md:text-4xl font-light leading-relaxed -mt-8">
+            <div className="max-w-3xl mx-auto text-center">
+              <span className="quote-mark">&ldquo;</span>
+              <blockquote className="text-2xl md:text-3xl font-light leading-relaxed -mt-12 tracking-tight">
                 {artistData.statement}
               </blockquote>
+              <div className="mt-12 w-16 h-px bg-black mx-auto" />
             </div>
           </ScrollReveal>
         </section>
@@ -94,16 +106,19 @@ export default function AboutPage() {
         {/* Education */}
         <section className="mb-32">
           <ScrollReveal>
-            <p className="text-accent text-sm tracking-[0.3em] uppercase mb-12">
-              Education
-            </p>
+            <div className="flex items-center gap-4 mb-12">
+              <div className="exhibit-marker" />
+              <p className="text-xs tracking-[0.3em] uppercase">Education</p>
+            </div>
           </ScrollReveal>
-          <div className="space-y-6">
+          <div className="space-y-0">
             {artistData.education.map((edu, index) => (
               <ScrollReveal key={edu.degree + edu.year} delay={index * 100}>
-                <div className="grid md:grid-cols-3 gap-4 py-6 border-b border-white/10">
-                  <p className="text-accent">{edu.year}</p>
-                  <p className="font-light">{edu.degree}</p>
+                <div className="group grid md:grid-cols-3 gap-4 py-6 border-b border-border hover:border-black transition-colors">
+                  <p className="text-sm">{edu.year}</p>
+                  <p className="font-light group-hover:translate-x-2 transition-transform">
+                    {edu.degree}
+                  </p>
                   <p className="text-muted">{edu.institution}</p>
                 </div>
               </ScrollReveal>
@@ -111,21 +126,27 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* Room Divider */}
+        <div className="room-divider my-16" />
+
         {/* Honors */}
         <section className="mb-32">
           <ScrollReveal>
-            <p className="text-accent text-sm tracking-[0.3em] uppercase mb-12">
-              Honors & Awards
-            </p>
+            <div className="flex items-center gap-4 mb-12">
+              <div className="exhibit-marker" />
+              <p className="text-xs tracking-[0.3em] uppercase">
+                Honors & Awards
+              </p>
+            </div>
           </ScrollReveal>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-4">
             {artistData.honors.map((honor, index) => (
               <ScrollReveal key={honor.title} delay={index * 50}>
-                <div className="group flex items-start gap-6 p-6 border border-white/10 hover:border-accent/30 transition-colors duration-500">
-                  <span className="text-2xl font-light text-accent">
+                <div className="group flex items-start gap-6 p-6 border border-border hover:border-black transition-colors">
+                  <span className="text-2xl font-extralight text-neutral-300">
                     {honor.year}
                   </span>
-                  <p className="font-light group-hover:text-accent transition-colors">
+                  <p className="font-light group-hover:translate-x-2 transition-transform">
                     {honor.title}
                   </p>
                 </div>
@@ -137,7 +158,7 @@ export default function AboutPage() {
         {/* Representation */}
         <section>
           <ScrollReveal>
-            <p className="text-accent text-sm tracking-[0.3em] uppercase mb-12">
+            <p className="text-xs tracking-[0.3em] uppercase text-muted mb-12 text-center">
               Representation
             </p>
           </ScrollReveal>
@@ -148,16 +169,15 @@ export default function AboutPage() {
                   href={rep.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group block p-8 border border-white/10 hover:border-accent/50 transition-colors duration-500"
+                  className="group block p-8 border border-border hover:border-black transition-colors"
                 >
-                  <h3 className="text-2xl font-light mb-2 group-hover:text-accent transition-colors">
+                  <h3 className="text-2xl font-light mb-2 group-hover:translate-x-2 transition-transform">
                     {rep.gallery}
                   </h3>
                   <p className="text-muted mb-6">{rep.location}</p>
-                  <div className="flex items-center gap-2 text-sm text-muted group-hover:text-foreground transition-colors">
-                    <span className="link-underline">Visit Gallery</span>
-                    <span>&rarr;</span>
-                  </div>
+                  <span className="inline-flex items-center gap-2 text-sm link-underline">
+                    Visit Gallery
+                  </span>
                 </a>
               </ScrollReveal>
             ))}
@@ -167,11 +187,11 @@ export default function AboutPage() {
         {/* Public Role */}
         <section className="mt-32">
           <ScrollReveal>
-            <div className="p-8 md:p-12 bg-white/[0.02] border border-white/10">
-              <p className="text-xs text-accent tracking-wider uppercase mb-4">
+            <div className="p-8 md:p-12 border border-border">
+              <p className="text-xs text-muted tracking-widest uppercase mb-4">
                 Public Service
               </p>
-              <h2 className="text-2xl md:text-3xl font-light mb-4">
+              <h2 className="text-2xl font-light mb-4">
                 Member, Public Design Commission
               </h2>
               <p className="text-muted max-w-2xl">

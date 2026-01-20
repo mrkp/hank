@@ -15,29 +15,31 @@ export default function WorksPage() {
     <div className="min-h-screen pt-32 pb-24 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-16">
-          <p className="text-accent text-sm tracking-[0.3em] uppercase mb-4 opacity-0-init animate-fade-in">
+        <div className="mb-24">
+          <div className="flex items-center gap-4 mb-8 opacity-0-init animate-fade-in">
+            <div className="exhibit-marker" />
+            <p className="text-xs tracking-[0.3em] uppercase">
+              Gallery — Works
+            </p>
+          </div>
+          <h1 className="text-4xl md:text-6xl font-light tracking-tight mb-6 opacity-0-init animate-reveal delay-200">
             Selected Works
-          </p>
-          <h1 className="text-4xl md:text-6xl font-light mb-6 opacity-0-init animate-reveal delay-200">
-            Artistic Practice
           </h1>
-          <p className="text-lg text-muted max-w-2xl opacity-0-init animate-slide-up delay-400">
+          <p className="text-lg text-muted max-w-xl opacity-0-init animate-slide-up delay-400">
             A body of work spanning photography, sculpture, screen printing, and
-            mixed media—exploring identity, commodity, and the visual codes that
-            shape our understanding of culture.
+            mixed media.
           </p>
         </div>
 
         {/* Category Filter */}
-        <div className="flex flex-wrap gap-4 mb-16 opacity-0-init animate-fade-in delay-500">
+        <div className="flex flex-wrap gap-3 mb-16 opacity-0-init animate-fade-in delay-500">
           {categories.map((category) => (
             <button
               key={category}
-              className={`px-4 py-2 text-sm tracking-wide border transition-colors duration-300 ${
+              className={`px-5 py-2.5 text-sm tracking-wide border transition-all ${
                 category === 'All'
-                  ? 'border-accent text-accent'
-                  : 'border-white/10 text-muted hover:border-white/30 hover:text-foreground'
+                  ? 'border-black bg-black text-white'
+                  : 'border-border text-muted hover:border-black hover:text-black'
               }`}
             >
               {category}
@@ -49,28 +51,30 @@ export default function WorksPage() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
           {artistData.selectedWorks.map((work, index) => (
             <ScrollReveal key={work.title} delay={index * 100}>
-              <article className="group">
-                <div className="aspect-[4/5] bg-white/5 mb-6 overflow-hidden relative">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-7xl font-light text-white/5 group-hover:text-accent/10 transition-colors duration-500">
+              <article className="gallery-card group">
+                <div
+                  className="aspect-[3/4] bg-neutral-100 gallery-frame mb-6"
+                  data-cursor-gallery
+                >
+                  <div className="w-full h-full flex items-center justify-center">
+                    <span className="text-5xl font-extralight text-neutral-200 group-hover:text-neutral-300 transition-colors">
                       {String(index + 1).padStart(2, '0')}
                     </span>
                   </div>
-                  <div className="absolute inset-0 border border-transparent group-hover:border-accent/30 transition-colors duration-500" />
                 </div>
-                <div className="space-y-3">
-                  <div className="flex items-center gap-3">
-                    <span className="text-xs text-accent tracking-wide uppercase">
+                <div className="artwork-label">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="text-xs text-muted tracking-wide uppercase">
                       {work.category}
                     </span>
-                    <span className="w-8 h-px bg-white/20" />
+                    <span className="w-4 h-px bg-border" />
                     <span className="text-xs text-muted">{work.year}</span>
                   </div>
-                  <h2 className="text-xl md:text-2xl font-light group-hover:text-accent transition-colors">
+                  <h2 className="text-xl font-light group-hover:translate-x-2 transition-transform">
                     {work.title}
                   </h2>
-                  <p className="text-sm text-muted/80">{work.medium}</p>
-                  <p className="text-sm text-muted leading-relaxed line-clamp-3">
+                  <p className="text-sm text-muted mt-2">{work.medium}</p>
+                  <p className="text-sm text-muted mt-3 leading-relaxed line-clamp-2">
                     {work.description}
                   </p>
                 </div>
@@ -80,11 +84,14 @@ export default function WorksPage() {
         </div>
 
         {/* Mediums Section */}
-        <section className="mt-32 pt-16 border-t border-white/10">
+        <section className="mt-32 pt-16 border-t border-border">
           <ScrollReveal>
-            <p className="text-accent text-sm tracking-[0.3em] uppercase mb-8">
-              Mediums & Techniques
-            </p>
+            <div className="flex items-center gap-4 mb-12">
+              <div className="exhibit-marker" />
+              <p className="text-xs tracking-[0.3em] uppercase">
+                Mediums & Techniques
+              </p>
+            </div>
           </ScrollReveal>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
@@ -110,26 +117,15 @@ export default function WorksPage() {
               },
             ].map((medium, index) => (
               <ScrollReveal key={medium.title} delay={index * 100}>
-                <div className="border-l border-white/10 pl-6 hover:border-accent transition-colors duration-500">
-                  <h3 className="text-lg font-light mb-2">{medium.title}</h3>
+                <div className="group py-6 border-b border-border hover:border-black transition-colors">
+                  <h3 className="text-lg font-light mb-2 group-hover:translate-x-2 transition-transform">
+                    {medium.title}
+                  </h3>
                   <p className="text-sm text-muted">{medium.description}</p>
                 </div>
               </ScrollReveal>
             ))}
           </div>
-        </section>
-
-        {/* Quote */}
-        <section className="mt-32">
-          <ScrollReveal>
-            <div className="max-w-3xl mx-auto text-center">
-              <span className="quote-mark text-accent">&ldquo;</span>
-              <blockquote className="text-2xl md:text-3xl font-light leading-relaxed -mt-8">
-                My work often deals with the way we see and the way we choose
-                not to see.
-              </blockquote>
-            </div>
-          </ScrollReveal>
         </section>
       </div>
     </div>

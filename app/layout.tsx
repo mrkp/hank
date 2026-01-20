@@ -42,33 +42,61 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased noise-overlay`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased cursor-none lg:cursor-none`}
       >
         <CustomCursor />
         <Navigation />
         <main>{children}</main>
-        <footer className="border-t border-white/10 py-12 px-6 md:px-12">
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-            <p className="text-muted text-sm">
-              &copy; {new Date().getFullYear()} Hank Willis Thomas Studio
-            </p>
-            <div className="flex gap-6 text-sm text-muted">
-              <a
-                href="https://www.jackshainman.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="link-underline hover:text-foreground transition-colors"
-              >
-                Jack Shainman Gallery
-              </a>
-              <a
-                href="https://www.pacegallery.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="link-underline hover:text-foreground transition-colors"
-              >
-                Pace Gallery
-              </a>
+        <footer className="border-t border-border py-16 px-6 md:px-12">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid md:grid-cols-3 gap-12">
+              <div>
+                <p className="text-xs tracking-widest uppercase text-muted mb-4">
+                  Studio
+                </p>
+                <p className="text-sm">Brooklyn, New York</p>
+              </div>
+              <div>
+                <p className="text-xs tracking-widest uppercase text-muted mb-4">
+                  Representation
+                </p>
+                <div className="space-y-2 text-sm">
+                  <a
+                    href="https://www.jackshainman.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block link-underline hover:text-muted transition-colors"
+                  >
+                    Jack Shainman Gallery, New York
+                  </a>
+                  <a
+                    href="https://www.pacegallery.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block link-underline hover:text-muted transition-colors"
+                  >
+                    Pace Gallery, London
+                  </a>
+                </div>
+              </div>
+              <div className="md:text-right">
+                <p className="text-xs tracking-widest uppercase text-muted mb-4">
+                  Inquiries
+                </p>
+                <p className="text-sm text-muted">
+                  For press and exhibition inquiries,
+                  <br />
+                  please contact gallery representation.
+                </p>
+              </div>
+            </div>
+            <div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
+              <p className="text-xs text-muted">
+                &copy; {new Date().getFullYear()} Hank Willis Thomas Studio. All rights reserved.
+              </p>
+              <p className="text-xs text-muted">
+                Site managed with Claude
+              </p>
             </div>
           </div>
         </footer>

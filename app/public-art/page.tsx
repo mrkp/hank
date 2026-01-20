@@ -14,82 +14,100 @@ export default function PublicArtPage() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-24">
-          <p className="text-accent text-sm tracking-[0.3em] uppercase mb-4 opacity-0-init animate-fade-in">
-            Public Art
-          </p>
-          <h1 className="text-4xl md:text-6xl font-light mb-6 opacity-0-init animate-reveal delay-200">
+          <div className="flex items-center gap-4 mb-8 opacity-0-init animate-fade-in">
+            <div className="exhibit-marker" />
+            <p className="text-xs tracking-[0.3em] uppercase">
+              Gallery — Public Art
+            </p>
+          </div>
+          <h1 className="text-4xl md:text-6xl font-light tracking-tight mb-6 opacity-0-init animate-reveal delay-200">
             Art in the
             <br />
-            <span className="gradient-text">Public Sphere</span>
+            Public Sphere
           </h1>
-          <p className="text-lg text-muted max-w-2xl opacity-0-init animate-slide-up delay-400">
+          <p className="text-lg text-muted max-w-xl opacity-0-init animate-slide-up delay-400">
             Permanent installations that transform public spaces into sites of
-            reflection, dialogue, and community engagement.
+            reflection and community engagement.
           </p>
         </div>
 
         {/* Featured Installation */}
         <section className="mb-32">
           <ScrollReveal>
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="aspect-square bg-white/5 relative overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-[12rem] font-light text-white/5">01</span>
+            <div className="grid lg:grid-cols-2 gap-12 items-start">
+              <div
+                className="aspect-square bg-neutral-100 gallery-frame"
+                data-cursor-gallery
+              >
+                <div className="w-full h-full flex items-center justify-center">
+                  <span className="text-[8rem] font-extralight text-neutral-200">
+                    01
+                  </span>
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent" />
               </div>
-              <div className="space-y-6">
-                <p className="text-accent text-sm tracking-wide">
-                  {artistData.publicArt[0].year} &middot;{' '}
-                  {artistData.publicArt[0].location}
-                </p>
-                <h2 className="text-4xl md:text-5xl font-light">
-                  {artistData.publicArt[0].title}
-                </h2>
-                <p className="text-lg text-muted leading-relaxed">
-                  {artistData.publicArt[0].description}
-                </p>
-                <div className="pt-4">
-                  <div className="w-24 h-px bg-accent" />
+              <div className="lg:pt-12">
+                <div className="artwork-label">
+                  <p className="text-xs text-muted tracking-wide uppercase mb-4">
+                    {artistData.publicArt[0].year} &middot;{' '}
+                    {artistData.publicArt[0].location}
+                  </p>
+                  <h2 className="text-3xl md:text-4xl font-light mb-6">
+                    {artistData.publicArt[0].title}
+                  </h2>
+                  <p className="text-muted leading-relaxed mb-8">
+                    {artistData.publicArt[0].description}
+                  </p>
+                  <div className="w-16 h-px bg-black" />
                 </div>
               </div>
             </div>
           </ScrollReveal>
         </section>
 
+        {/* Room Divider */}
+        <div className="room-divider my-16" />
+
         {/* All Public Art */}
         <section>
           <ScrollReveal>
-            <p className="text-accent text-sm tracking-[0.3em] uppercase mb-12">
-              Permanent Installations
-            </p>
+            <div className="flex items-center gap-4 mb-12">
+              <div className="exhibit-marker" />
+              <p className="text-xs tracking-[0.3em] uppercase">
+                Permanent Installations
+              </p>
+            </div>
           </ScrollReveal>
 
-          <div className="space-y-16">
+          <div className="space-y-0">
             {artistData.publicArt.slice(1).map((artwork, index) => (
-              <ScrollReveal key={artwork.title} delay={index * 150}>
-                <article className="grid md:grid-cols-3 gap-8 items-start group">
-                  <div className="aspect-[4/3] bg-white/5 relative overflow-hidden">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-6xl font-light text-white/5 group-hover:text-accent/10 transition-colors">
+              <ScrollReveal key={artwork.title} delay={index * 100}>
+                <article className="group grid md:grid-cols-3 gap-8 py-12 border-b border-border hover:border-black transition-colors">
+                  <div
+                    className="aspect-[4/3] bg-neutral-100 gallery-frame"
+                    data-cursor-gallery
+                  >
+                    <div className="w-full h-full flex items-center justify-center">
+                      <span className="text-4xl font-extralight text-neutral-200 group-hover:text-neutral-300 transition-colors">
                         {String(index + 2).padStart(2, '0')}
                       </span>
                     </div>
                   </div>
-                  <div className="md:col-span-2 space-y-4">
-                    <div className="flex items-center gap-4">
-                      <span className="text-accent text-sm">{artwork.year}</span>
-                      <span className="w-8 h-px bg-white/20" />
-                      <span className="text-sm text-muted">
-                        {artwork.location}
-                      </span>
+                  <div className="md:col-span-2 flex flex-col justify-center">
+                    <div className="artwork-label border-l-0">
+                      <div className="flex items-center gap-3 mb-2">
+                        <span className="text-xs text-muted">{artwork.year}</span>
+                        <span className="w-4 h-px bg-border" />
+                        <span className="text-xs text-muted">
+                          {artwork.location}
+                        </span>
+                      </div>
+                      <h2 className="text-2xl font-light mb-3 group-hover:translate-x-2 transition-transform">
+                        {artwork.title}
+                      </h2>
+                      <p className="text-muted leading-relaxed max-w-xl">
+                        {artwork.description}
+                      </p>
                     </div>
-                    <h2 className="text-2xl md:text-3xl font-light group-hover:text-accent transition-colors">
-                      {artwork.title}
-                    </h2>
-                    <p className="text-muted leading-relaxed max-w-xl">
-                      {artwork.description}
-                    </p>
                   </div>
                 </article>
               </ScrollReveal>
@@ -97,47 +115,43 @@ export default function PublicArtPage() {
           </div>
         </section>
 
-        {/* Map Section Placeholder */}
-        <section className="mt-32 pt-16 border-t border-white/10">
+        {/* Locations */}
+        <section className="mt-32 pt-16 border-t border-border">
           <ScrollReveal>
             <div className="text-center">
-              <p className="text-accent text-sm tracking-[0.3em] uppercase mb-4">
+              <p className="text-xs tracking-[0.3em] uppercase text-muted mb-8">
                 Locations
               </p>
-              <h2 className="text-3xl md:text-4xl font-light mb-8">
-                Experience the Work
-              </h2>
-              <div className="aspect-[2/1] bg-white/5 relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <p className="text-muted mb-2">
-                      Brooklyn, NY &bull; San Francisco, CA &bull; Opa Locka, FL
-                    </p>
-                    <p className="text-sm text-muted/60">
-                      Yorkshire Sculpture Park, UK
-                    </p>
-                  </div>
-                </div>
+              <div className="flex flex-wrap justify-center gap-4">
+                {['Brooklyn, NY', 'San Francisco, CA', 'Opa Locka, FL', 'Yorkshire, UK'].map(
+                  (location) => (
+                    <span
+                      key={location}
+                      className="px-6 py-3 border border-border text-sm tracking-wide"
+                    >
+                      {location}
+                    </span>
+                  )
+                )}
               </div>
             </div>
           </ScrollReveal>
         </section>
 
         {/* Commission Info */}
-        <section className="mt-32">
+        <section className="mt-24">
           <ScrollReveal>
-            <div className="p-8 md:p-16 border border-white/10 bg-white/[0.02]">
-              <p className="text-accent text-sm tracking-[0.3em] uppercase mb-4">
-                Public Design Commission
+            <div className="p-8 md:p-12 border border-border">
+              <p className="text-xs text-muted tracking-widest uppercase mb-4">
+                Public Service
               </p>
-              <h2 className="text-2xl md:text-3xl font-light mb-6">
-                City of New York Member
+              <h2 className="text-2xl font-light mb-4">
+                Member, Public Design Commission
               </h2>
-              <p className="text-muted leading-relaxed max-w-2xl">
-                As a member of the Public Design Commission for the City of New
-                York, Hank Willis Thomas continues to advocate for public art
-                that engages communities and transforms shared spaces into sites
-                of meaning and dialogue.
+              <p className="text-muted max-w-2xl">
+                City of New York. Contributing to the review and approval of
+                public art, architecture, and urban design that shapes the
+                city&apos;s shared spaces.
               </p>
             </div>
           </ScrollReveal>

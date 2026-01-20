@@ -4,215 +4,280 @@ import { artistData } from '@/lib/data';
 
 export default function Home() {
   return (
-    <div className="grid-lines">
-      {/* Hero Section */}
+    <div>
+      {/* Hero - Gallery Entrance */}
       <section className="min-h-screen flex flex-col justify-center px-6 md:px-12 pt-24">
         <div className="max-w-7xl mx-auto w-full">
-          <div className="space-y-8">
-            <p className="text-accent text-sm tracking-[0.3em] uppercase opacity-0-init animate-fade-in">
-              Conceptual Artist
-            </p>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight leading-none opacity-0-init animate-reveal delay-200">
-              Hank Willis
-              <br />
-              <span className="gradient-text">Thomas</span>
-            </h1>
-            <div className="max-w-xl opacity-0-init animate-slide-up delay-500">
-              <p className="text-lg md:text-xl text-muted leading-relaxed">
-                {artistData.statement}
-              </p>
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
+              <div className="space-y-4">
+                <p className="text-xs tracking-[0.3em] uppercase text-muted opacity-0-init animate-fade-in">
+                  Conceptual Artist
+                </p>
+                <h1 className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight leading-[0.9] opacity-0-init animate-reveal delay-200">
+                  Hank
+                  <br />
+                  Willis
+                  <br />
+                  Thomas
+                </h1>
+              </div>
+              <div className="max-w-md opacity-0-init animate-slide-up delay-500">
+                <p className="text-lg text-muted leading-relaxed">
+                  {artistData.statement}
+                </p>
+              </div>
+              <div className="flex items-center gap-8 opacity-0-init animate-fade-in delay-700">
+                <Link
+                  href="/works"
+                  className="group inline-flex items-center gap-4 text-sm tracking-wide"
+                >
+                  <span className="w-12 h-px bg-black group-hover:w-20 transition-all" />
+                  <span>Enter Gallery</span>
+                </Link>
+              </div>
             </div>
-            <div className="flex gap-6 opacity-0-init animate-fade-in delay-700">
-              <Link
-                href="/works"
-                className="group inline-flex items-center gap-3 text-sm tracking-wide"
-              >
-                <span className="link-underline">Explore Works</span>
-                <span className="transform group-hover:translate-x-2 transition-transform">
-                  &rarr;
-                </span>
-              </Link>
-              <Link
-                href="/about"
-                className="text-sm tracking-wide text-muted hover:text-foreground transition-colors link-underline"
-              >
-                About the Artist
-              </Link>
-            </div>
-          </div>
 
-          {/* Scroll indicator */}
-          <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-0-init animate-fade-in delay-1000">
-            <span className="text-xs tracking-widest text-muted uppercase">
-              Scroll
-            </span>
-            <div className="w-px h-12 bg-gradient-to-b from-accent to-transparent animate-pulse-slow" />
+            {/* Featured artwork placeholder */}
+            <div className="opacity-0-init animate-scale-in delay-400">
+              <div
+                className="aspect-[4/5] bg-neutral-100 gallery-frame"
+                data-cursor-gallery
+              >
+                <div className="w-full h-full flex items-center justify-center">
+                  <span className="text-[10rem] font-extralight text-neutral-200">
+                    HWT
+                  </span>
+                </div>
+              </div>
+              <div className="mt-4 artwork-label">
+                <p className="text-xs text-muted tracking-wide">Featured Work</p>
+                <p className="text-sm mt-1">I Am a Man, 2014</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Quote Section */}
-      <section className="py-32 md:py-48 px-6 md:px-12">
+      {/* Room Divider */}
+      <div className="room-divider my-8" />
+
+      {/* Gallery Room 1: Selected Works */}
+      <section className="py-24 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto">
+          <ScrollReveal>
+            <div className="flex items-center gap-4 mb-16">
+              <div className="exhibit-marker" />
+              <p className="text-xs tracking-[0.3em] uppercase">
+                Gallery 01 — Selected Works
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {artistData.selectedWorks.slice(0, 3).map((work, index) => (
+              <ScrollReveal key={work.title} delay={index * 100}>
+                <article className="gallery-card group">
+                  <div
+                    className="aspect-[3/4] bg-neutral-100 gallery-frame mb-6"
+                    data-cursor-gallery
+                  >
+                    <div className="w-full h-full flex items-center justify-center">
+                      <span className="text-6xl font-extralight text-neutral-200 group-hover:text-neutral-300 transition-colors">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="artwork-label">
+                    <p className="text-xs text-muted tracking-wide uppercase">
+                      {work.category}
+                    </p>
+                    <h3 className="text-lg font-light mt-1 group-hover:translate-x-2 transition-transform">
+                      {work.title}
+                    </h3>
+                    <p className="text-sm text-muted mt-1">{work.year}</p>
+                  </div>
+                </article>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          <ScrollReveal delay={400}>
+            <div className="mt-16 flex justify-center">
+              <Link
+                href="/works"
+                className="group inline-flex items-center gap-4 text-sm tracking-wide px-8 py-4 border border-border hover:border-black transition-colors"
+              >
+                <span>View All Works</span>
+                <span className="group-hover:translate-x-2 transition-transform">&rarr;</span>
+              </Link>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Quote - Gallery Placard */}
+      <section className="py-32 px-6 md:px-12 bg-neutral-50">
         <ScrollReveal>
-          <div className="max-w-5xl mx-auto text-center relative">
-            <span className="quote-mark absolute -top-16 left-0 md:left-12 text-accent">
-              &ldquo;
-            </span>
-            <blockquote className="text-2xl md:text-4xl lg:text-5xl font-light leading-relaxed tracking-tight">
+          <div className="max-w-4xl mx-auto text-center">
+            <span className="quote-mark">&ldquo;</span>
+            <blockquote className="text-2xl md:text-4xl font-light leading-relaxed -mt-12 tracking-tight">
               {artistData.heroQuote}
             </blockquote>
-            <div className="mt-8 w-16 h-px bg-accent mx-auto animate-line-grow" />
+            <div className="mt-12 flex justify-center">
+              <div className="w-16 h-px bg-black animate-line-grow" />
+            </div>
           </div>
         </ScrollReveal>
       </section>
 
-      {/* Featured Themes */}
-      <section className="py-24 px-6 md:px-12 border-t border-white/5">
-        <div className="max-w-7xl mx-auto">
-          <ScrollReveal>
-            <p className="text-accent text-sm tracking-[0.3em] uppercase mb-12">
-              Themes & Practice
-            </p>
-          </ScrollReveal>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-            {artistData.themes.map((theme, index) => (
-              <ScrollReveal key={theme} delay={index * 100}>
-                <div className="group p-6 border border-white/10 hover:border-accent/50 transition-colors duration-500">
-                  <span className="text-xs text-muted mb-2 block">
-                    0{index + 1}
-                  </span>
-                  <h3 className="text-lg md:text-xl font-light group-hover:text-accent transition-colors">
-                    {theme}
-                  </h3>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Selected Works Preview */}
+      {/* Gallery Room 2: Public Art */}
       <section className="py-24 px-6 md:px-12">
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
-            <div className="flex justify-between items-end mb-12">
-              <div>
-                <p className="text-accent text-sm tracking-[0.3em] uppercase mb-4">
-                  Selected Works
-                </p>
-                <h2 className="text-3xl md:text-4xl font-light">
-                  Recent Projects
-                </h2>
-              </div>
-              <Link
-                href="/works"
-                className="hidden md:inline-flex items-center gap-2 text-sm text-muted hover:text-foreground transition-colors link-underline"
-              >
-                View All Works &rarr;
-              </Link>
+            <div className="flex items-center gap-4 mb-16">
+              <div className="exhibit-marker" />
+              <p className="text-xs tracking-[0.3em] uppercase">
+                Gallery 02 — Public Art
+              </p>
             </div>
           </ScrollReveal>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {artistData.selectedWorks.slice(0, 3).map((work, index) => (
-              <ScrollReveal key={work.title} delay={index * 150}>
-                <article className="group">
-                  <div className="aspect-[4/5] bg-white/5 mb-6 overflow-hidden relative">
-                    <div className="absolute inset-0 flex items-center justify-center text-muted">
-                      <span className="text-6xl font-light opacity-20">
-                        {String(index + 1).padStart(2, '0')}
-                      </span>
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  </div>
-                  <div className="space-y-2">
-                    <p className="text-xs text-accent tracking-wide uppercase">
-                      {work.category} &middot; {work.year}
-                    </p>
-                    <h3 className="text-xl font-light group-hover:text-accent transition-colors">
-                      {work.title}
-                    </h3>
-                    <p className="text-sm text-muted line-clamp-2">
-                      {work.description}
-                    </p>
-                  </div>
-                </article>
+          <div className="grid lg:grid-cols-2 gap-16">
+            <ScrollReveal>
+              <div
+                className="aspect-square bg-neutral-100 gallery-frame"
+                data-cursor-gallery
+              >
+                <div className="w-full h-full flex items-center justify-center">
+                  <span className="text-8xl font-extralight text-neutral-200">
+                    01
+                  </span>
+                </div>
+              </div>
+            </ScrollReveal>
+            <div className="flex flex-col justify-center">
+              <ScrollReveal delay={150}>
+                <div className="space-y-8">
+                  {artistData.publicArt.map((artwork, index) => (
+                    <article
+                      key={artwork.title}
+                      className="group py-6 border-b border-border hover:border-black transition-colors"
+                    >
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <h3 className="text-xl font-light group-hover:translate-x-2 transition-transform">
+                            {artwork.title}
+                          </h3>
+                          <p className="text-sm text-muted mt-1">
+                            {artwork.location}, {artwork.year}
+                          </p>
+                        </div>
+                        <span className="text-xs text-muted">
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+                      </div>
+                    </article>
+                  ))}
+                  <Link
+                    href="/public-art"
+                    className="inline-flex items-center gap-2 text-sm tracking-wide link-underline"
+                  >
+                    Explore Public Art
+                  </Link>
+                </div>
               </ScrollReveal>
-            ))}
+            </div>
           </div>
-
-          <Link
-            href="/works"
-            className="md:hidden mt-8 inline-flex items-center gap-2 text-sm link-underline"
-          >
-            View All Works &rarr;
-          </Link>
         </div>
       </section>
 
-      {/* Public Art Highlight */}
-      <section className="py-24 px-6 md:px-12 bg-white/[0.02]">
-        <div className="max-w-7xl mx-auto">
-          <ScrollReveal>
-            <p className="text-accent text-sm tracking-[0.3em] uppercase mb-4">
-              Public Art
-            </p>
-            <h2 className="text-3xl md:text-4xl font-light mb-12">
-              Art in the Public Sphere
-            </h2>
-          </ScrollReveal>
+      {/* Room Divider */}
+      <div className="room-divider my-8" />
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {artistData.publicArt.map((artwork, index) => (
-              <ScrollReveal key={artwork.title} delay={index * 150}>
-                <article className="group border-l border-white/10 pl-6 hover:border-accent transition-colors duration-500">
-                  <p className="text-accent text-sm mb-2">{artwork.year}</p>
-                  <h3 className="text-xl md:text-2xl font-light mb-2 group-hover:text-accent transition-colors">
-                    {artwork.title}
-                  </h3>
-                  <p className="text-sm text-muted mb-4">{artwork.location}</p>
-                  <p className="text-sm text-muted/80 leading-relaxed">
-                    {artwork.description}
-                  </p>
-                </article>
-              </ScrollReveal>
-            ))}
-          </div>
-
-          <ScrollReveal delay={450}>
-            <Link
-              href="/public-art"
-              className="mt-12 inline-flex items-center gap-2 text-sm link-underline"
-            >
-              Explore Public Art &rarr;
-            </Link>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* Collaborations Preview */}
+      {/* Gallery Room 3: Current Exhibition */}
       <section className="py-24 px-6 md:px-12">
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
-            <p className="text-accent text-sm tracking-[0.3em] uppercase mb-4">
-              Collaborative Projects
-            </p>
-            <h2 className="text-3xl md:text-4xl font-light mb-12">
-              Beyond the Studio
-            </h2>
+            <div className="flex items-center gap-4 mb-16">
+              <div className="exhibit-marker" />
+              <p className="text-xs tracking-[0.3em] uppercase">
+                Gallery 03 — Now Showing
+              </p>
+            </div>
           </ScrollReveal>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {artistData.collaborations.slice(0, 2).map((collab, index) => (
-              <ScrollReveal key={collab.title} delay={index * 150}>
-                <article className="group p-8 border border-white/10 hover:border-accent/30 transition-colors duration-500">
-                  <p className="text-xs text-accent tracking-wider uppercase mb-4">
+          <ScrollReveal delay={100}>
+            <div className="grid lg:grid-cols-5 gap-8 p-8 md:p-12 border border-border">
+              <div className="lg:col-span-3 space-y-6">
+                <div>
+                  <p className="text-xs tracking-widest uppercase text-muted mb-4">
+                    Current Exhibition
+                  </p>
+                  <h2 className="text-3xl md:text-5xl font-light tracking-tight">
+                    {artistData.exhibitions.current[0].title}
+                  </h2>
+                </div>
+                <p className="text-muted leading-relaxed max-w-xl">
+                  {artistData.exhibitions.current[0].description}
+                </p>
+                <Link
+                  href="/exhibitions"
+                  className="inline-flex items-center gap-2 text-sm tracking-wide link-underline"
+                >
+                  Exhibition Details
+                </Link>
+              </div>
+              <div className="lg:col-span-2 flex flex-col justify-between">
+                <div className="space-y-4 text-sm">
+                  <div>
+                    <p className="text-xs text-muted tracking-wide uppercase mb-1">
+                      Venue
+                    </p>
+                    <p>{artistData.exhibitions.current[0].venue}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted tracking-wide uppercase mb-1">
+                      Location
+                    </p>
+                    <p>{artistData.exhibitions.current[0].location}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted tracking-wide uppercase mb-1">
+                      Dates
+                    </p>
+                    <p>{artistData.exhibitions.current[0].dates}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Collaborative Projects */}
+      <section className="py-24 px-6 md:px-12 bg-neutral-50">
+        <div className="max-w-7xl mx-auto">
+          <ScrollReveal>
+            <div className="flex items-center gap-4 mb-16">
+              <div className="exhibit-marker" />
+              <p className="text-xs tracking-[0.3em] uppercase">
+                Gallery 04 — Collaborative Projects
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid md:grid-cols-2 gap-px bg-border">
+            {artistData.collaborations.slice(0, 4).map((collab, index) => (
+              <ScrollReveal key={collab.title} delay={index * 100}>
+                <article className="group bg-neutral-50 p-8 md:p-12 hover:bg-white transition-colors">
+                  <p className="text-xs text-muted tracking-wider uppercase mb-4">
                     {collab.type}
                   </p>
-                  <h3 className="text-2xl md:text-3xl font-light mb-4 group-hover:text-accent transition-colors">
+                  <h3 className="text-2xl font-light mb-4 group-hover:translate-x-2 transition-transform">
                     {collab.title}
                   </h3>
-                  <p className="text-muted leading-relaxed">
+                  <p className="text-sm text-muted leading-relaxed line-clamp-2">
                     {collab.description}
                   </p>
                 </article>
@@ -220,61 +285,49 @@ export default function Home() {
             ))}
           </div>
 
-          <ScrollReveal delay={300}>
-            <Link
-              href="/collaborations"
-              className="mt-12 inline-flex items-center gap-2 text-sm link-underline"
-            >
-              All Collaborations &rarr;
-            </Link>
+          <ScrollReveal delay={400}>
+            <div className="mt-12 flex justify-center">
+              <Link
+                href="/collaborations"
+                className="inline-flex items-center gap-2 text-sm tracking-wide link-underline"
+              >
+                View All Projects
+              </Link>
+            </div>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* Current Exhibition Banner */}
-      <section className="py-24 px-6 md:px-12 border-t border-white/5">
-        <ScrollReveal>
-          <div className="max-w-7xl mx-auto">
-            <div className="relative p-8 md:p-16 border border-accent/30 bg-accent/5">
-              <span className="absolute top-4 right-4 text-xs text-accent tracking-widest uppercase animate-pulse-slow">
-                Now Showing
-              </span>
-              <p className="text-accent text-sm tracking-[0.3em] uppercase mb-4">
-                Current Exhibition
-              </p>
-              <h2 className="text-3xl md:text-5xl font-light mb-4">
-                {artistData.exhibitions.current[0].title}
-              </h2>
-              <p className="text-lg text-muted mb-2">
-                {artistData.exhibitions.current[0].venue}
-              </p>
-              <p className="text-sm text-muted mb-6">
-                {artistData.exhibitions.current[0].location} &middot;{' '}
-                {artistData.exhibitions.current[0].dates}
-              </p>
-              <p className="text-muted/80 max-w-2xl leading-relaxed mb-8">
-                {artistData.exhibitions.current[0].description}
-              </p>
-              <Link
-                href="/exhibitions"
-                className="inline-flex items-center gap-2 text-sm link-underline"
-              >
-                View All Exhibitions &rarr;
-              </Link>
-            </div>
+      {/* Themes - Interactive Tags */}
+      <section className="py-24 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto">
+          <ScrollReveal>
+            <p className="text-xs tracking-[0.3em] uppercase text-muted mb-12 text-center">
+              Themes & Practice
+            </p>
+          </ScrollReveal>
+          <div className="flex flex-wrap justify-center gap-4">
+            {artistData.themes.map((theme, index) => (
+              <ScrollReveal key={theme} delay={index * 50}>
+                <span className="px-6 py-3 border border-border text-sm tracking-wide hover:border-black hover:bg-black hover:text-white transition-all cursor-default">
+                  {theme}
+                </span>
+              </ScrollReveal>
+            ))}
           </div>
-        </ScrollReveal>
+        </div>
       </section>
 
-      {/* Honors Strip */}
-      <section className="py-16 px-6 md:px-12 overflow-hidden">
-        <div className="flex gap-12 animate-[scroll_30s_linear_infinite] whitespace-nowrap">
+      {/* Honors Marquee */}
+      <section className="py-12 border-t border-border overflow-hidden">
+        <div className="flex gap-16 animate-[scroll_40s_linear_infinite] whitespace-nowrap">
           {[...artistData.honors, ...artistData.honors].map((honor, index) => (
             <span
               key={`${honor.title}-${index}`}
-              className="text-muted/50 text-sm tracking-wide"
+              className="text-sm text-muted tracking-wide"
             >
               {honor.title} ({honor.year})
+              <span className="mx-8 text-border">•</span>
             </span>
           ))}
         </div>

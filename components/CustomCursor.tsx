@@ -28,34 +28,60 @@ export default function CustomCursor() {
       // Smooth follow for dot
       dotX += (mouseX - dotX) * 0.2;
       dotY += (mouseY - dotY) * 0.2;
-      dot.style.transform = `translate(${dotX - 4}px, ${dotY - 4}px)`;
+      dot.style.transform = `translate(${dotX - 3}px, ${dotY - 3}px)`;
 
       // Slower follow for ring
       ringX += (mouseX - ringX) * 0.1;
       ringY += (mouseY - ringY) * 0.1;
-      ring.style.transform = `translate(${ringX - 20}px, ${ringY - 20}px)`;
+      ring.style.transform = `translate(${ringX - 16}px, ${ringY - 16}px)`;
 
       requestAnimationFrame(animate);
     };
 
-    // Handle hover states
+    // Handle hover states for interactive elements
     const handleMouseEnter = () => {
-      ring.style.width = '60px';
-      ring.style.height = '60px';
-      ring.style.borderColor = 'rgba(212, 175, 55, 0.8)';
+      ring.style.width = '48px';
+      ring.style.height = '48px';
+      ring.style.borderColor = 'rgba(0, 0, 0, 0.6)';
+      ring.style.transform = `translate(${ringX - 24}px, ${ringY - 24}px)`;
     };
 
     const handleMouseLeave = () => {
-      ring.style.width = '40px';
-      ring.style.height = '40px';
-      ring.style.borderColor = 'rgba(212, 175, 55, 0.5)';
+      ring.style.width = '32px';
+      ring.style.height = '32px';
+      ring.style.borderColor = 'rgba(0, 0, 0, 0.3)';
+      ring.style.transform = `translate(${ringX - 16}px, ${ringY - 16}px)`;
+    };
+
+    // Handle gallery items - expand ring more
+    const handleGalleryEnter = () => {
+      ring.style.width = '64px';
+      ring.style.height = '64px';
+      ring.style.borderColor = 'rgba(0, 0, 0, 0.8)';
+      ring.style.transform = `translate(${ringX - 32}px, ${ringY - 32}px)`;
+      dot.style.opacity = '0';
+    };
+
+    const handleGalleryLeave = () => {
+      ring.style.width = '32px';
+      ring.style.height = '32px';
+      ring.style.borderColor = 'rgba(0, 0, 0, 0.3)';
+      ring.style.transform = `translate(${ringX - 16}px, ${ringY - 16}px)`;
+      dot.style.opacity = '1';
     };
 
     // Apply hover effect to interactive elements
-    const interactiveElements = document.querySelectorAll('a, button, [data-cursor-hover]');
+    const interactiveElements = document.querySelectorAll('a, button');
+    const galleryElements = document.querySelectorAll('[data-cursor-gallery]');
+
     interactiveElements.forEach((el) => {
       el.addEventListener('mouseenter', handleMouseEnter);
       el.addEventListener('mouseleave', handleMouseLeave);
+    });
+
+    galleryElements.forEach((el) => {
+      el.addEventListener('mouseenter', handleGalleryEnter);
+      el.addEventListener('mouseleave', handleGalleryLeave);
     });
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -67,6 +93,10 @@ export default function CustomCursor() {
       interactiveElements.forEach((el) => {
         el.removeEventListener('mouseenter', handleMouseEnter);
         el.removeEventListener('mouseleave', handleMouseLeave);
+      });
+      galleryElements.forEach((el) => {
+        el.removeEventListener('mouseenter', handleGalleryEnter);
+        el.removeEventListener('mouseleave', handleGalleryLeave);
       });
     };
   }, []);
