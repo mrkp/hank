@@ -40,16 +40,15 @@ export default function CollaborationsPage() {
                   <p className="text-xs tracking-widest uppercase text-muted mb-6">
                     Featured Project
                   </p>
-                  {/* For Freedoms Logo */}
-                  <div className="mb-8">
+                  {/* For Freedoms Logo + Title */}
+                  <div className="flex items-center gap-6 mb-8">
                     <svg
-                      width="280"
+                      width="80"
                       height="auto"
                       viewBox="0 0 468 216"
-                      className="w-48 md:w-64 lg:w-72"
-                      aria-label="For Freedoms"
+                      className="w-16 md:w-20 flex-shrink-0"
+                      aria-label="For Freedoms logomark"
                     >
-                      <title>For Freedoms</title>
                       <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                         <g fill="#0A0B09">
                           <path d="M468,21.9904375 C459.02667,18.4220331 450.117105,15.4631083 441.260053,13 L441.260053,113.041273 C306.064345,75.434174 183.635346,159.467393 50,136.966417 L50,162.066897 C183.640972,184.555586 306.069971,100.522367 441.260053,138.13561 L441.260053,163.06406 C306.064345,125.451431 183.635346,209.484651 50,186.984288 L50,212.112417 C192.394251,236.07811 322.056176,139.036312 468,197.148834 L468,21.9904375"></path>
@@ -57,6 +56,9 @@ export default function CollaborationsPage() {
                         </g>
                       </g>
                     </svg>
+                    <h2 className="text-4xl md:text-5xl font-light">
+                      For Freedoms
+                    </h2>
                   </div>
                   <p className="text-lg text-muted leading-relaxed mb-8">
                     A platform for creative civic engagement, discourse, and direct
