@@ -15,8 +15,8 @@ export default function WorksPage() {
     : artistData.selectedWorks.filter(work => work.category === activeCategory);
 
   return (
-    <div className="min-h-screen pt-32 pb-24 px-6 md:px-12">
-      <div className="max-w-[1800px] mx-auto">
+    <div className="min-h-screen pt-32 pb-24 px-4 md:px-8">
+      <div className="w-full">
         {/* Header */}
         <div className="mb-16">
           <div className="flex items-center gap-4 mb-8 opacity-0-init animate-fade-in">

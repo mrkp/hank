@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen pt-32 pb-24 px-6 md:px-12">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen pt-32 pb-24 px-4 md:px-8">
+      <div className="w-full">
         {/* Header */}
         <div className="grid lg:grid-cols-2 gap-16 mb-32">
           <div>
@@ -92,7 +92,7 @@ export default function AboutPage() {
         </section>
 
         {/* Statement Quote */}
-        <section className="mb-32 py-24 bg-neutral-50 -mx-6 md:-mx-12 px-6 md:px-12">
+        <section className="mb-32 py-24 bg-neutral-50 -mx-6 md:-mx-12 px-4 md:px-8">
           <ScrollReveal>
             <div className="max-w-3xl mx-auto text-center">
               <span className="quote-mark">&ldquo;</span>

@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 
 export default function CollaborationsPage() {
   return (
-    <div className="min-h-screen pt-32 pb-24 px-6 md:px-12">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen pt-32 pb-24 px-4 md:px-8">
+      <div className="w-full">
         {/* Header */}
         <div className="mb-24">
           <div className="flex items-center gap-4 mb-8 opacity-0-init animate-fade-in">
@@ -154,7 +154,7 @@ export default function CollaborationsPage() {
         </section>
 
         {/* Quote */}
-        <section className="mt-32 py-24 bg-neutral-50 -mx-6 md:-mx-12 px-6 md:px-12">
+        <section className="mt-32 py-24 bg-neutral-50 -mx-6 md:-mx-12 px-4 md:px-8">
           <ScrollReveal>
             <div className="max-w-3xl mx-auto text-center">
               <span className="quote-mark">&ldquo;</span>

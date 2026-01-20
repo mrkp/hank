@@ -10,6 +10,7 @@ const navLinks = [
   { href: '/public-art', label: 'Public Art' },
   { href: '/exhibitions', label: 'Exhibitions' },
   { href: '/collaborations', label: 'Projects' },
+  { href: '/press', label: 'Press' },
   { href: '/about', label: 'About' },
 ];
 
@@ -44,7 +45,7 @@ export default function Navigation() {
           scrolled ? 'bg-white/95 backdrop-blur-sm shadow-sm' : 'bg-transparent'
         }`}
       >
-        <nav className="max-w-7xl mx-auto px-6 md:px-12 py-6 flex items-center justify-between">
+        <nav className="w-full px-4 md:px-8 py-6 flex items-center justify-between">
           <Link
             href="/"
             className="group flex items-center gap-3"

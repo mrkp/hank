@@ -7,8 +7,8 @@ export default function Home() {
   return (
     <div>
       {/* Hero - Gallery Entrance */}
-      <section className="min-h-screen flex flex-col justify-center px-6 md:px-12 pt-24">
-        <div className="max-w-7xl mx-auto w-full">
+      <section className="min-h-screen flex flex-col justify-center px-4 md:px-8 pt-24">
+        <div className="w-full w-full">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
               <div className="space-y-4">
@@ -63,8 +63,8 @@ export default function Home() {
       <div className="room-divider my-8" />
 
       {/* Gallery Room 1: Selected Works */}
-      <section className="py-24 px-6 md:px-12">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-24 px-4 md:px-8">
+        <div className="w-full">
           <ScrollReveal>
             <div className="flex items-center gap-4 mb-16">
               <div className="exhibit-marker" />
@@ -115,7 +115,7 @@ export default function Home() {
       </section>
 
       {/* Quote - Gallery Placard */}
-      <section className="py-32 px-6 md:px-12 bg-neutral-50">
+      <section className="py-32 px-4 md:px-8 bg-neutral-50">
         <ScrollReveal>
           <div className="max-w-4xl mx-auto text-center">
             <span className="quote-mark">&ldquo;</span>
@@ -130,8 +130,8 @@ export default function Home() {
       </section>
 
       {/* Gallery Room 2: Public Art */}
-      <section className="py-24 px-6 md:px-12">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-24 px-4 md:px-8">
+        <div className="w-full">
           <ScrollReveal>
             <div className="flex items-center gap-4 mb-16">
               <div className="exhibit-marker" />
@@ -192,8 +192,8 @@ export default function Home() {
       <div className="room-divider my-8" />
 
       {/* Gallery Room 3: Current Exhibition */}
-      <section className="py-24 px-6 md:px-12">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-24 px-4 md:px-8">
+        <div className="w-full">
           <ScrollReveal>
             <div className="flex items-center gap-4 mb-16">
               <div className="exhibit-marker" />
@@ -207,8 +207,8 @@ export default function Home() {
             <div className="grid lg:grid-cols-2 gap-8">
               <div className="aspect-[4/3] bg-neutral-100 gallery-frame relative overflow-hidden">
                 <Image
-                  src={artistData.exhibitions.current[0].image!}
-                  alt={artistData.exhibitions.current[0].title}
+                  src={artistData.exhibitions[0].image}
+                  alt={artistData.exhibitions[0].title}
                   fill
                   className="object-cover"
                 />
@@ -218,15 +218,15 @@ export default function Home() {
                   Current Exhibition
                 </p>
                 <h2 className="text-3xl md:text-4xl font-light tracking-tight mb-4">
-                  {artistData.exhibitions.current[0].title}
+                  {artistData.exhibitions[0].title}
                 </h2>
                 <p className="text-muted leading-relaxed mb-6">
-                  {artistData.exhibitions.current[0].description}
+                  {artistData.exhibitions[0].description}
                 </p>
                 <div className="space-y-2 text-sm mb-8">
-                  <p><span className="text-muted">Venue:</span> {artistData.exhibitions.current[0].venue}</p>
-                  <p><span className="text-muted">Location:</span> {artistData.exhibitions.current[0].location}</p>
-                  <p><span className="text-muted">Dates:</span> {artistData.exhibitions.current[0].dates}</p>
+                  <p><span className="text-muted">Venue:</span> {artistData.exhibitions[0].venue}</p>
+                  <p><span className="text-muted">Location:</span> {artistData.exhibitions[0].location}</p>
+                  <p><span className="text-muted">Dates:</span> {artistData.exhibitions[0].dates}</p>
                 </div>
                 <Link
                   href="/exhibitions"
@@ -241,8 +241,8 @@ export default function Home() {
       </section>
 
       {/* Collaborative Projects */}
-      <section className="py-24 px-6 md:px-12 bg-neutral-50">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-24 px-4 md:px-8 bg-neutral-50">
+        <div className="w-full">
           <ScrollReveal>
             <div className="flex items-center gap-4 mb-16">
               <div className="exhibit-marker" />
@@ -284,8 +284,8 @@ export default function Home() {
       </section>
 
       {/* Themes - Interactive Tags */}
-      <section className="py-24 px-6 md:px-12">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-24 px-4 md:px-8">
+        <div className="w-full">
           <ScrollReveal>
             <p className="text-xs tracking-[0.3em] uppercase text-muted mb-12 text-center">
               Themes & Practice
