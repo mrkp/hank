@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
 import { artistData } from '@/lib/data';
 import { Metadata } from 'next';
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
     'Explore the artistic works of Hank Willis Thomas, including photography, sculpture, and mixed media.',
 };
 
-const categories = ['All', 'Photography', 'Retroreflective', 'Print', 'Sculpture'];
+const categories = ['All', 'Retroreflective', 'Sculpture', 'Mixed Media'];
 
 export default function WorksPage() {
   return (
@@ -52,15 +53,13 @@ export default function WorksPage() {
           {artistData.selectedWorks.map((work, index) => (
             <ScrollReveal key={work.title} delay={index * 100}>
               <article className="gallery-card group">
-                <div
-                  className="aspect-[3/4] bg-neutral-100 gallery-frame mb-6"
-                  data-cursor-gallery
-                >
-                  <div className="w-full h-full flex items-center justify-center">
-                    <span className="text-5xl font-extralight text-neutral-200 group-hover:text-neutral-300 transition-colors">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                  </div>
+                <div className="aspect-[3/4] bg-neutral-100 gallery-frame mb-6 relative overflow-hidden">
+                  <Image
+                    src={work.image}
+                    alt={work.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
                 </div>
                 <div className="artwork-label">
                   <div className="flex items-center gap-3 mb-2">
@@ -96,14 +95,9 @@ export default function WorksPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                title: 'Photography',
-                description:
-                  'Documentary and conceptual photography exploring identity and commodity.',
-              },
-              {
                 title: 'Retroreflective',
                 description:
-                  'Works using road signage vinyl that reveal hidden imagery under flash.',
+                  'Works using road signage vinyl that reveal hidden imagery under flash photography.',
               },
               {
                 title: 'Sculpture',
@@ -111,9 +105,14 @@ export default function WorksPage() {
                   'Large-scale bronze and mixed media works for public spaces.',
               },
               {
-                title: 'Screen Print',
+                title: 'Mixed Media',
                 description:
-                  'Prints that examine the relationship between branding and identity.',
+                  'Collage and assemblage works exploring identity, history, and visual culture.',
+              },
+              {
+                title: 'Photography',
+                description:
+                  'Documentary and conceptual photography exploring identity and commodity.',
               },
             ].map((medium, index) => (
               <ScrollReveal key={medium.title} delay={index * 100}>

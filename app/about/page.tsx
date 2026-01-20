@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
 import { artistData } from '@/lib/data';
 import { Metadata } from 'next';
@@ -37,16 +38,16 @@ export default function AboutPage() {
             </div>
           </div>
           <div className="opacity-0-init animate-scale-in delay-500">
-            <div
-              className="aspect-[4/5] bg-neutral-100 gallery-frame"
-              data-cursor-gallery
-            >
-              <div className="w-full h-full flex items-center justify-center">
-                <span className="text-[8rem] font-extralight text-neutral-200">
-                  HWT
-                </span>
-              </div>
+            <div className="aspect-[4/5] bg-neutral-100 gallery-frame relative overflow-hidden">
+              <Image
+                src={artistData.portrait}
+                alt="Hank Willis Thomas"
+                fill
+                className="object-cover"
+                priority
+              />
             </div>
+            <p className="text-xs text-muted mt-3">Photo by Jai Lennard</p>
           </div>
         </div>
 

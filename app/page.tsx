@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
 import { artistData } from '@/lib/data';
 
@@ -38,21 +39,20 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Featured artwork placeholder */}
+            {/* Featured artwork */}
             <div className="opacity-0-init animate-scale-in delay-400">
-              <div
-                className="aspect-[4/5] bg-neutral-100 gallery-frame"
-                data-cursor-gallery
-              >
-                <div className="w-full h-full flex items-center justify-center">
-                  <span className="text-[10rem] font-extralight text-neutral-200">
-                    HWT
-                  </span>
-                </div>
+              <div className="aspect-[4/5] bg-neutral-100 gallery-frame relative overflow-hidden">
+                <Image
+                  src={artistData.selectedWorks[0].image}
+                  alt={artistData.selectedWorks[0].title}
+                  fill
+                  className="object-cover"
+                  priority
+                />
               </div>
               <div className="mt-4 artwork-label">
                 <p className="text-xs text-muted tracking-wide">Featured Work</p>
-                <p className="text-sm mt-1">I Am a Man, 2014</p>
+                <p className="text-sm mt-1">{artistData.selectedWorks[0].title}, {artistData.selectedWorks[0].year}</p>
               </div>
             </div>
           </div>
@@ -78,15 +78,13 @@ export default function Home() {
             {artistData.selectedWorks.slice(0, 3).map((work, index) => (
               <ScrollReveal key={work.title} delay={index * 100}>
                 <article className="gallery-card group">
-                  <div
-                    className="aspect-[3/4] bg-neutral-100 gallery-frame mb-6"
-                    data-cursor-gallery
-                  >
-                    <div className="w-full h-full flex items-center justify-center">
-                      <span className="text-6xl font-extralight text-neutral-200 group-hover:text-neutral-300 transition-colors">
-                        {String(index + 1).padStart(2, '0')}
-                      </span>
-                    </div>
+                  <div className="aspect-[3/4] bg-neutral-100 gallery-frame mb-6 relative overflow-hidden">
+                    <Image
+                      src={work.image}
+                      alt={work.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
                   </div>
                   <div className="artwork-label">
                     <p className="text-xs text-muted tracking-wide uppercase">
@@ -145,21 +143,19 @@ export default function Home() {
 
           <div className="grid lg:grid-cols-2 gap-16">
             <ScrollReveal>
-              <div
-                className="aspect-square bg-neutral-100 gallery-frame"
-                data-cursor-gallery
-              >
-                <div className="w-full h-full flex items-center justify-center">
-                  <span className="text-8xl font-extralight text-neutral-200">
-                    01
-                  </span>
-                </div>
+              <div className="aspect-square bg-neutral-100 gallery-frame relative overflow-hidden">
+                <Image
+                  src={artistData.publicArt[0].image}
+                  alt={artistData.publicArt[0].title}
+                  fill
+                  className="object-cover"
+                />
               </div>
             </ScrollReveal>
             <div className="flex flex-col justify-center">
               <ScrollReveal delay={150}>
                 <div className="space-y-8">
-                  {artistData.publicArt.map((artwork, index) => (
+                  {artistData.publicArt.slice(0, 4).map((artwork, index) => (
                     <article
                       key={artwork.title}
                       className="group py-6 border-b border-border hover:border-black transition-colors"
@@ -208,47 +204,36 @@ export default function Home() {
           </ScrollReveal>
 
           <ScrollReveal delay={100}>
-            <div className="grid lg:grid-cols-5 gap-8 p-8 md:p-12 border border-border">
-              <div className="lg:col-span-3 space-y-6">
-                <div>
-                  <p className="text-xs tracking-widest uppercase text-muted mb-4">
-                    Current Exhibition
-                  </p>
-                  <h2 className="text-3xl md:text-5xl font-light tracking-tight">
-                    {artistData.exhibitions.current[0].title}
-                  </h2>
-                </div>
-                <p className="text-muted leading-relaxed max-w-xl">
+            <div className="grid lg:grid-cols-2 gap-8">
+              <div className="aspect-[4/3] bg-neutral-100 gallery-frame relative overflow-hidden">
+                <Image
+                  src={artistData.exhibitions.current[0].image!}
+                  alt={artistData.exhibitions.current[0].title}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="flex flex-col justify-center p-8">
+                <p className="text-xs tracking-widest uppercase text-muted mb-4">
+                  Current Exhibition
+                </p>
+                <h2 className="text-3xl md:text-4xl font-light tracking-tight mb-4">
+                  {artistData.exhibitions.current[0].title}
+                </h2>
+                <p className="text-muted leading-relaxed mb-6">
                   {artistData.exhibitions.current[0].description}
                 </p>
+                <div className="space-y-2 text-sm mb-8">
+                  <p><span className="text-muted">Venue:</span> {artistData.exhibitions.current[0].venue}</p>
+                  <p><span className="text-muted">Location:</span> {artistData.exhibitions.current[0].location}</p>
+                  <p><span className="text-muted">Dates:</span> {artistData.exhibitions.current[0].dates}</p>
+                </div>
                 <Link
                   href="/exhibitions"
-                  className="inline-flex items-center gap-2 text-sm tracking-wide link-underline"
+                  className="inline-flex items-center gap-2 text-sm tracking-wide link-underline w-fit"
                 >
-                  Exhibition Details
+                  All Exhibitions
                 </Link>
-              </div>
-              <div className="lg:col-span-2 flex flex-col justify-between">
-                <div className="space-y-4 text-sm">
-                  <div>
-                    <p className="text-xs text-muted tracking-wide uppercase mb-1">
-                      Venue
-                    </p>
-                    <p>{artistData.exhibitions.current[0].venue}</p>
-                  </div>
-                  <div>
-                    <p className="text-xs text-muted tracking-wide uppercase mb-1">
-                      Location
-                    </p>
-                    <p>{artistData.exhibitions.current[0].location}</p>
-                  </div>
-                  <div>
-                    <p className="text-xs text-muted tracking-wide uppercase mb-1">
-                      Dates
-                    </p>
-                    <p>{artistData.exhibitions.current[0].dates}</p>
-                  </div>
-                </div>
               </div>
             </div>
           </ScrollReveal>

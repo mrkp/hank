@@ -4,6 +4,8 @@ export const artistData = {
   location: "Brooklyn, NY",
   born: "1976, Plainfield, NJ",
 
+  portrait: "https://cdn.sanity.io/images/93zz3bxe/production/550d4c53b437b060699bf81b6cb84d03f448215d-1871x2357.jpg",
+
   statement: "I work primarily with themes related to perspective, identity, commodity, media, and popular culture.",
 
   heroQuote: "What I try to do is create work that allows us to see things that are often hiding in plain sight.",
@@ -61,25 +63,46 @@ export const artistData = {
 
   publicArt: [
     {
+      title: "The Embrace",
+      location: "Boston, MA",
+      year: "2023",
+      description: "A monumental bronze sculpture honoring Dr. Martin Luther King Jr. and Coretta Scott King, located on Boston Common.",
+      image: "https://cdn.sanity.io/images/93zz3bxe/production/ae5b99559f6111f47e831ddc3120e555c072646d-8925x5950.jpg"
+    },
+    {
       title: "Unity",
       location: "Brooklyn, NY",
       year: "2019",
       description: "A monumental bronze sculpture depicting an embrace, symbolizing unity and solidarity in the heart of Brooklyn.",
-      image: "/works/unity.jpg"
+      image: "https://cdn.sanity.io/images/93zz3bxe/production/8fcaa83ac40d78a666787709dce52e9a067905b5-1571x1032.jpg"
     },
     {
       title: "Love Over Rules",
       location: "San Francisco, CA",
       year: "2017",
       description: "A public artwork that transforms text into sculptural form, emphasizing the power of love in civic spaces.",
-      image: "/works/love-over-rules.jpg"
+      image: "https://cdn.sanity.io/images/93zz3bxe/production/36176cad11d41071c6627cc6cf170cdc0b0eb58c-1859x2400.jpg"
     },
     {
       title: "All Power to All People",
       location: "Opa Locka, FL",
       year: "2017",
-      description: "An Afro pick reimagined as monumental sculpture, reclaiming symbols of Black identity and power. A bronze version is displayed at Yorkshire Sculpture Park through August 2025.",
-      image: "/works/all-power.jpg"
+      description: "An Afro pick reimagined as monumental sculpture, reclaiming symbols of Black identity and power.",
+      image: "https://cdn.sanity.io/images/93zz3bxe/production/6031e08956d863e36fd48fcdd3c55ce2cec672fa-2400x1800.jpg"
+    },
+    {
+      title: "REACH",
+      location: "Various",
+      year: "2022",
+      description: "A sculptural work exploring themes of aspiration and connection.",
+      image: "https://cdn.sanity.io/images/93zz3bxe/production/f9598542e714818cc2a8efb91b77c005f549b8ad-2449x1633.jpg"
+    },
+    {
+      title: "Duality",
+      location: "Various",
+      year: "2021",
+      description: "An exploration of opposing forces and the balance between them.",
+      image: "https://cdn.sanity.io/images/93zz3bxe/production/443030f4428e586d5b6fef0b4870c9e43a422b4d-3965x2638.jpg"
     }
   ],
 
@@ -90,14 +113,16 @@ export const artistData = {
         venue: "Jack Shainman Gallery",
         location: "46 Lafayette Street, NYC",
         dates: "September 5 – November 1, 2025",
-        description: "Large-scale sculptures, retroreflective works, lenticular pieces, textiles, and mixed-media assemblages exploring legacies of exploitation and oppression alongside new forms of community and solidarity."
+        description: "Large-scale sculptures, retroreflective works, lenticular pieces, textiles, and mixed-media assemblages exploring legacies of exploitation and oppression alongside new forms of community and solidarity.",
+        image: "https://cdn.sanity.io/images/93zz3bxe/production/bd44b4b3293f3f604f8cad8746bf61b11cbe0c08-1950x1346.png"
       },
       {
         title: "Kinship of the Soul",
         venue: "Pace Gallery",
         location: "London",
         dates: "November 20 – December 21, 2024",
-        description: "Retroreflective collages exploring histories of abstraction through lenses of colonization, globalization, and appropriation."
+        description: "Retroreflective collages exploring histories of abstraction through lenses of colonization, globalization, and appropriation.",
+        image: "https://cdn.sanity.io/images/93zz3bxe/production/32dc59c56a0e7159cdba45c05957a9b320c65c31-1350x1080.gif"
       }
     ],
     past: [
@@ -112,39 +137,68 @@ export const artistData = {
 
   selectedWorks: [
     {
-      title: "I Am a Man",
-      year: "2014",
+      title: "I looked upon the Nile and raised the pyramids above it",
+      year: "2023",
       medium: "Retroreflective vinyl on aluminum",
-      description: "References the 1968 Memphis Sanitation Strike. Under flash photography, latent protest imagery emerges from the surface.",
-      category: "Retroreflective"
+      description: "A retroreflective work that reveals different imagery under flash photography, exploring themes of African heritage and historical erasure.",
+      category: "Retroreflective",
+      image: "https://cdn.sanity.io/images/93zz3bxe/production/55603af9ae47f8b41ddcba0c8e7f644170bf5903-3000x2000.jpg"
     },
     {
-      title: "Branded",
-      year: "2006-present",
+      title: "The Embrace",
+      year: "2023",
+      medium: "Bronze sculpture",
+      description: "A monumental bronze sculpture honoring Dr. Martin Luther King Jr. and Coretta Scott King.",
+      category: "Sculpture",
+      image: "https://cdn.sanity.io/images/93zz3bxe/production/820520970b65451e987a3642d5677a9ac760c154-6000x4000.jpg"
+    },
+    {
+      title: "Listen Lord (Aaron Douglas)",
+      year: "2022",
       medium: "Mixed media",
-      description: "An ongoing series examining the relationship between the Black body and commodity culture through advertising imagery.",
-      category: "Photography"
+      description: "A work paying homage to the Harlem Renaissance artist Aaron Douglas and his powerful visual legacy.",
+      category: "Mixed Media",
+      image: "https://cdn.sanity.io/images/93zz3bxe/production/86091500c86cb3d89aa31eb66bb6ae8dfa97eb85-2507x3534.jpg"
     },
     {
-      title: "Unbranded: Reflections in Black by Corporate America",
-      year: "2005-2008",
-      medium: "Digital prints",
-      description: "Advertisements stripped of text, revealing the underlying assumptions and visual codes used to sell products to Black consumers.",
-      category: "Photography"
+      title: "O Long May It Wave",
+      year: "2022",
+      medium: "Mixed media",
+      description: "An examination of American symbolism and the complex histories embedded in national iconography.",
+      category: "Mixed Media",
+      image: "https://cdn.sanity.io/images/93zz3bxe/production/20fb70cbf85ee04d57b6e06f535d6d16baf32d35-2400x2205.jpg"
     },
     {
-      title: "B®anded",
-      year: "2006",
-      medium: "Screen print on retro reflective paper",
-      description: "Explores the commodification of Black bodies, drawing parallels between historical branding practices and modern advertising.",
-      category: "Print"
+      title: "Colonialism and Abstract Art",
+      year: "2019",
+      medium: "Mixed media",
+      description: "Explores the intersection of modernist abstraction and colonial histories.",
+      category: "Mixed Media",
+      image: "https://cdn.sanity.io/images/93zz3bxe/production/8fb8a219cc7946b601d1e3eead655a5c0afe333f-1004x1405.jpg"
     },
     {
-      title: "Punctum Series",
-      year: "Various",
-      medium: "Photography",
-      description: "Referencing Roland Barthes' concept of 'punctum' - the detail in a photograph that pierces the viewer.",
-      category: "Photography"
+      title: "The Toilers",
+      year: "2021",
+      medium: "Mixed media",
+      description: "A reflection on labor, history, and the human condition.",
+      category: "Mixed Media",
+      image: "https://cdn.sanity.io/images/93zz3bxe/production/aed6880549ca41a59e147f77c6f3a1f58712ee89-1367x1906.jpg"
+    },
+    {
+      title: "Freedom Riders on Colors for a Large Wall",
+      year: "2020",
+      medium: "Mixed media",
+      description: "A tribute to the Freedom Riders and the civil rights movement, rendered through bold color and form.",
+      category: "Mixed Media",
+      image: "https://cdn.sanity.io/images/93zz3bxe/production/e2b2c78302d0038a420fed410bcf3e2a11cff07c-1333x2000.gif"
+    },
+    {
+      title: "Sundown",
+      year: "2021",
+      medium: "Retroreflective vinyl",
+      description: "A meditation on sundown towns and the hidden histories of racial exclusion in America.",
+      category: "Retroreflective",
+      image: "https://cdn.sanity.io/images/93zz3bxe/production/5afa5bfc9f6ff8906bc1b886623781ba086ce4c2-2400x1603.jpg"
     }
   ],
 
@@ -155,7 +209,8 @@ export const artistData = {
     "Hong Kong Arts Centre",
     "Witte de With Center for Contemporary Art",
     "Jack Shainman Gallery",
-    "Pace Gallery"
+    "Pace Gallery",
+    "Museum of Fine Arts, Boston"
   ],
 
   contact: {

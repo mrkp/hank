@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
 import { artistData } from '@/lib/data';
 import { Metadata } from 'next';
@@ -35,15 +36,14 @@ export default function PublicArtPage() {
         <section className="mb-32">
           <ScrollReveal>
             <div className="grid lg:grid-cols-2 gap-12 items-start">
-              <div
-                className="aspect-square bg-neutral-100 gallery-frame"
-                data-cursor-gallery
-              >
-                <div className="w-full h-full flex items-center justify-center">
-                  <span className="text-[8rem] font-extralight text-neutral-200">
-                    01
-                  </span>
-                </div>
+              <div className="aspect-[4/3] bg-neutral-100 gallery-frame relative overflow-hidden">
+                <Image
+                  src={artistData.publicArt[0].image}
+                  alt={artistData.publicArt[0].title}
+                  fill
+                  className="object-cover"
+                  priority
+                />
               </div>
               <div className="lg:pt-12">
                 <div className="artwork-label">
@@ -82,15 +82,13 @@ export default function PublicArtPage() {
             {artistData.publicArt.slice(1).map((artwork, index) => (
               <ScrollReveal key={artwork.title} delay={index * 100}>
                 <article className="group grid md:grid-cols-3 gap-8 py-12 border-b border-border hover:border-black transition-colors">
-                  <div
-                    className="aspect-[4/3] bg-neutral-100 gallery-frame"
-                    data-cursor-gallery
-                  >
-                    <div className="w-full h-full flex items-center justify-center">
-                      <span className="text-4xl font-extralight text-neutral-200 group-hover:text-neutral-300 transition-colors">
-                        {String(index + 2).padStart(2, '0')}
-                      </span>
-                    </div>
+                  <div className="aspect-[4/3] bg-neutral-100 gallery-frame relative overflow-hidden">
+                    <Image
+                      src={artwork.image}
+                      alt={artwork.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
                   </div>
                   <div className="md:col-span-2 flex flex-col justify-center">
                     <div className="artwork-label border-l-0">
@@ -123,7 +121,7 @@ export default function PublicArtPage() {
                 Locations
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                {['Brooklyn, NY', 'San Francisco, CA', 'Opa Locka, FL', 'Yorkshire, UK'].map(
+                {['Boston, MA', 'Brooklyn, NY', 'San Francisco, CA', 'Opa Locka, FL'].map(
                   (location) => (
                     <span
                       key={location}
